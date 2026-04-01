@@ -1,49 +1,29 @@
-/*
-  SENG 3120 Course material
-  Copyright (c) 2025
-  All rights reserved.
-
-  This document contains resources for homework assigned to students of
-  SENG 3120 and shall not be distributed without permission.  Posting this
-  file to a public or private website, or providing this file to a person
-  not registered in SENG 3120, constitutes Academic Misconduct, according
-  to Thompsons Rivers University Policy on Academic Misconduct.
-
-  Synopsis:
-     Student class for Assignment 3
- */
 
 import java.util.ArrayList;
 
-/**
- * A model of a Student who has a name, social insurance number, student ID,
- * a bed label (if assigned), and a list of managers.
- * Extends the Person class.
- */
+
 public class Student extends Person {
 
     /**
-     * The student's unique student ID (SID).
+     *  student's unique student ID (SID).
      */
     private String sid;
 
     /**
-     * The label of the bed assigned to this student. -1 if no bed is assigned.
+     *  label of the bed assigned to this student. -1 if no bed is assigned.
      */
     private int bedLabel;
 
     /**
-     * The list of managers assigned to this student.
+     *  list of managers assigned to this student.
      */
     private ArrayList<Manager> managers;
 
     /**
-     * Initialize a Student with the given name, social insurance number, and student ID.
-     * The student initially has no bed assigned and no managers.
      *
-     * @param name  the name of the student
-     * @param ssn   the social insurance number of the student
-     * @param sid   the student ID of the student
+     * @param name   name of the student
+     * @param ssn    social insurance number of the student
+     * @param sid    student ID of the student
      * @precond name != null && !name.equals("") && ssn > 0 && sid != null && !sid.equals("")
      */
     public Student(String name, int ssn, String sid) {
@@ -58,7 +38,7 @@ public class Student extends Person {
     /**
      * Return the student ID of the student.
      *
-     * @return the student ID (SID)
+     * @return 
      */
     public String getSID() {
         return this.sid;
@@ -67,7 +47,7 @@ public class Student extends Person {
     /**
      * Return the bed label of the student. Returns -1 if no bed is assigned.
      *
-     * @return the bed label of the student
+     * @return 
      */
     public int getBedLabel() {
         return this.bedLabel;
@@ -76,7 +56,7 @@ public class Student extends Person {
     /**
      * Set the bed label for the student.
      *
-     * @param bedLabel the bed label to assign to the student
+     * @param bedLabel 
      */
     public void setBedLabel(int bedLabel) {
         this.bedLabel = bedLabel;
@@ -85,7 +65,7 @@ public class Student extends Person {
     /**
      * Add a manager to this student's list of managers.
      *
-     * @param m the Manager to add
+     * @param m  Manager to add
      * @precond m != null
      */
     public void addManager(Manager m) {
@@ -98,7 +78,7 @@ public class Student extends Person {
      * Remove the manager with the given employee ID from this student's list of managers.
      * Does nothing if no manager with that ID is found.
      *
-     * @param employeeId the employee ID of the manager to remove
+     * @param employeeId  employee ID of the manager to remove
      * @precond employeeId != null && !employeeId.equals("")
      */
     public void removeManager(String employeeId) {
@@ -115,7 +95,7 @@ public class Student extends Person {
     /**
      * Check whether a manager with the given employee ID is assigned to this student.
      *
-     * @param employeeId the employee ID to search for
+     * @param employeeId 
      * @precond employeeId != null && !employeeId.equals("")
      * @return true if a manager with the given employee ID is found, false otherwise
      */
@@ -131,9 +111,6 @@ public class Student extends Person {
     }
 
     /**
-     * Return a string representation of all the information about the student,
-     * including name, SSN, bed label, and all associated managers.
-     *
      * @return a string representation of the student
      */
     public String toString() {

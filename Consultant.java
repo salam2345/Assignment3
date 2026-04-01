@@ -1,32 +1,13 @@
-/*
-  SENG 3120 Course material
-  Copyright (c) 2025
-  All rights reserved.
 
-  This document contains resources for homework assigned to students of
-  SENG 3120 and shall not be distributed without permission.  Posting this
-  file to a public or private website, or providing this file to a person
-  not registered in SENG 3120, constitutes Academic Misconduct, according
-  to Thompsons Rivers University Policy on Academic Misconduct.
-
-  Synopsis:
-     Consultant class for Assignment 3
- */
-
-/**
- * A model of a Consultant, which is a specialized type of Manager.
- * A Consultant has a name, social insurance number, employee ID, and a list of students.
- * Extends the Manager class.
- */
 public class Consultant extends Manager {
 
     /**
      * Initialize a Consultant with the given name, social insurance number, and employee ID.
-     * Initially the Consultant has no students.
+     * at first the Consultant has no students.
      *
-     * @param name          the name of the consultant
-     * @param ssn           the social insurance number of the consultant
-     * @param employeeId    the employee ID of the consultant
+     * @param name           name of the consultant
+     * @param ssn            social insurance number of the consultant
+     * @param employeeId     employee ID of the consultant
      * @precond name != null && !name.equals("") && ssn > 0 && employeeId != null && !employeeId.equals("")
      */
     public Consultant(String name, int ssn, String employeeId) {
@@ -34,7 +15,7 @@ public class Consultant extends Manager {
     }
 
     /**
-     * Return a string representation of all information about this consultant.
+     * Returning a string representation of all information about this consultant.
      * The string is prefixed with "Consultant: " to distinguish from regular managers.
      *
      * @return a string representation of the consultant

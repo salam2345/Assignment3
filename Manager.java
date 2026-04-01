@@ -1,25 +1,8 @@
-/*
-  SENG 3120 Course material
-  Copyright (c) 2025
-  All rights reserved.
 
-  This document contains resources for homework assigned to students of
-  SENG 3120 and shall not be distributed without permission.  Posting this
-  file to a public or private website, or providing this file to a person
-  not registered in SENG 3120, constitutes Academic Misconduct, according
-  to Thompsons Rivers University Policy on Academic Misconduct.
-
-  Synopsis:
-     Manager class for Assignment 3
- */
 
 import java.util.ArrayList;
 
-/**
- * A model of a Manager who has a name, social insurance number, employee ID,
- * and a list of students under their care.
- * Extends the BasicManager class.
- */
+
 public class Manager extends BasicManager {
 
     /**
@@ -29,11 +12,11 @@ public class Manager extends BasicManager {
 
     /**
      * Initialize a Manager with the given name, social insurance number, and employee ID.
-     * The manager initially has no students.
+     *  manager initially has no students.
      *
-     * @param name          the name of the manager
-     * @param ssn           the social insurance number of the manager
-     * @param employeeId    the employee ID of the manager
+     * @param name           name of the manager
+     * @param ssn            social insurance number of the manager
+     * @param employeeId     employee ID of the manager
      * @precond name != null && !name.equals("") && ssn > 0 && employeeId != null && !employeeId.equals("")
      */
     public Manager(String name, int ssn, String employeeId) {
@@ -44,7 +27,7 @@ public class Manager extends BasicManager {
     /**
      * Add a student to this manager's list of students.
      *
-     * @param s the Student to add
+     * @param s  Student to add
      * @precond s != null
      */
     public void addStudent(Student s) {
@@ -54,10 +37,10 @@ public class Manager extends BasicManager {
     }
 
     /**
-     * Remove the student with the given SID from this manager's list of students.
-     * Does nothing if no student with that SID is found.
+     * Removing the student with the given SID from this manager's list of students.
+     *  nothing if no student with that SID is found.
      *
-     * @param sid the student ID of the student to remove
+     * @param sid 
      * @precond sid != null && !sid.equals("")
      */
     public void removeStudent(String sid) {
@@ -74,7 +57,7 @@ public class Manager extends BasicManager {
     /**
      * Check whether a student with the given SID is under this manager's care.
      *
-     * @param sid the student ID to search for
+     * @param sid  student ID to search for
      * @precond sid != null && !sid.equals("")
      * @return true if a student with the given SID is found, false otherwise
      */
@@ -90,10 +73,10 @@ public class Manager extends BasicManager {
     }
 
     /**
-     * Return a string representation of all the information about the manager,
+     * Returning a string representation of all the information about the manager,
      * including name, SSN, employee ID, and all assigned students.
      *
-     * @return a string representation of the manager
+     * @return 
      */
     public String toString() {
         String result = super.toString();

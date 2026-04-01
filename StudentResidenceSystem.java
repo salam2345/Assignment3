@@ -1,42 +1,18 @@
-/*
-  SENG 3120 Course material
-  Copyright (c) 2025
-  All rights reserved.
-
-  This document contains resources for homework assigned to students of
-  SENG 3120 and shall not be distributed without permission.  Posting this
-  file to a public or private website, or providing this file to a person
-  not registered in SENG 3120, constitutes Academic Misconduct, according
-  to Thompsons Rivers University Policy on Academic Misconduct.
-
-  Synopsis:
-     StudentResidenceSystem class for Assignment 3
- */
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-/**
- * A simple Student Residence Management System that allows a university administrator
- * to manage students, managers, and bed assignments in a residence.
- * Uses a console menu to drive interactions.
- */
+
 public class StudentResidenceSystem {
 
-    /**
-     * The single Residence object for this system.
-     */
+
     private Residence residence;
 
-    /**
-     * A keyed dictionary of all students in the system, keyed by SID.
-     */
+  
     private TreeMap<String, Student> students;
 
-    /**
-     * A keyed dictionary of all managers in the system, keyed by employee ID.
-     */
+
     private TreeMap<String, Manager> managers;
 
     /**
@@ -44,11 +20,7 @@ public class StudentResidenceSystem {
      */
     private Scanner scanner;
 
-    /**
-     * Initialize the StudentResidenceSystem. Prompts the user for residence name,
-     * first bed label, and last bed label to create the Residence.
-     * Initially there are no students and no managers.
-     */
+
     public StudentResidenceSystem() {
         students = new TreeMap<String, Student>();
         managers = new TreeMap<String, Manager>();
@@ -303,9 +275,9 @@ public class StudentResidenceSystem {
     }
 
     /**
-     * The main method. Creates a StudentResidenceSystem and runs the interactive
+     * Creates a StudentResidenceSystem and runs the interactive
      * menu loop until the user chooses to quit (task 1).
-     * Upon quitting, displays the current system state.
+     * when quitting, displays the current system state.
      *
      * @param args not used
      */

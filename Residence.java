@@ -1,27 +1,8 @@
-/*
-  SENG 3120 Course material
-  Copyright (c) 2025
-  All rights reserved.
 
-  This document contains resources for homework assigned to students of
-  SENG 3120 and shall not be distributed without permission.  Posting this
-  file to a public or private website, or providing this file to a person
-  not registered in SENG 3120, constitutes Academic Misconduct, according
-  to Thompsons Rivers University Policy on Academic Misconduct.
-
-  Synopsis:
-     Updated Residence class for Assignment 3
-     - Changed beds array type from Person[] to Student[]
-     - Added availableBeds() method
-     - Added freeBed() method
- */
 
 import java.util.ArrayList;
 
-/**
- * A Residence of a university with a specified number of beds with consecutive labels.
- * Each bed can hold a Student. Provides methods to assign, release, and query beds.
- */
+
 public class Residence {
 
     /**
@@ -41,12 +22,12 @@ public class Residence {
     private Student[] beds;
 
     /**
-     * Initialize the Residence with the name given, and with beds whose labels are
+     * Initializ the Residence with the name given, and with beds whose labels are
      * the consecutive integers from minBedLabel to maxBedLabel.
      *
-     * @param wName         the name of the Residence
-     * @param wMinBedLabel  the label of the first bed in the Residence
-     * @param wMaxBedLabel  the label of the last bed in the Residence
+     * @param wName          name of the Residence
+     * @param wMinBedLabel   label of the first bed in the Residence
+     * @param wMaxBedLabel   label of the last bed in the Residence
      * @precond wName != null && !wName.equals("") && wMinBedLabel >= 0 && wMaxBedLabel >= wMinBedLabel
      */
     public Residence(String wName, int wMinBedLabel, int wMaxBedLabel) {
@@ -65,7 +46,7 @@ public class Residence {
     /**
      * Return the name of this Residence.
      *
-     * @return the name of this Residence
+     * @return 
      */
     public String getName() {
         return name;
@@ -74,7 +55,7 @@ public class Residence {
     /**
      * Return the smallest label for a bed in the Residence.
      *
-     * @return the smallest label for a bed in the Residence
+     * @return 
      */
     public int getMinBedLabel() {
         return minBedLabel;
@@ -83,7 +64,7 @@ public class Residence {
     /**
      * Return the largest label for a bed in the Residence.
      *
-     * @return the largest label for a bed in the Residence
+     * @return 
      */
     public int getMaxBedLabel() {
         return minBedLabel + beds.length - 1;
@@ -92,7 +73,7 @@ public class Residence {
     /**
      * Return the internal array index for the given external bed label.
      *
-     * @param bedLabel the external bed label
+     * @param bedLabel  external bed label
      * @precond isValidLabel(bedLabel)
      * @return the internal array index corresponding to the external label
      */
@@ -106,9 +87,9 @@ public class Residence {
     /**
      * Return the external bed label for the given internal array index.
      *
-     * @param arrayIndex the internal array index
+     * @param arrayIndex  internal array index
      * @precond 0 <= arrayIndex < beds.length
-     * @return the external label corresponding to the internal array index
+     * @return  external label match to the internal array index
      */
     private int internalToExternalLabel(int arrayIndex) {
         if (arrayIndex < 0 || arrayIndex >= beds.length)
@@ -120,7 +101,7 @@ public class Residence {
     /**
      * Is the specified bed currently occupied?
      *
-     * @param bedLabel the label of the bed to check
+     * @param bedLabel  label of the bed to check
      * @precond isValidLabel(bedLabel)
      * @return true if the bed is occupied, false otherwise
      */
@@ -134,9 +115,9 @@ public class Residence {
     /**
      * Return the Student in the specified bed.
      *
-     * @param bedLabel the label of the bed from which to retrieve the student
+     * @param bedLabel  label of the bed from which to retrieve the student
      * @precond isValidLabel(bedLabel) && isOccupied(bedLabel)
-     * @return the Student in the specified bed
+     * @return  Student in the specified bed
      */
     public Student getStudent(int bedLabel) {
         if (!isValidLabel(bedLabel))
@@ -151,8 +132,8 @@ public class Residence {
     /**
      * Assign the specified student to the specified bed.
      *
-     * @param s         the Student to be assigned a bed
-     * @param bedLabel  the label of the bed to assign the student to
+     * @param s          Student to be assigned a bed
+     * @param bedLabel   label of the bed to assign the student to
      * @precond isValidLabel(bedLabel) && !isOccupied(bedLabel)
      */
     public void assignStudentToBed(Student s, int bedLabel) {
@@ -172,7 +153,7 @@ public class Residence {
     /**
      * Return a list of the labels of all empty (unoccupied) beds in the Residence.
      *
-     * @return an ArrayList of integer bed labels that are currently unoccupied
+     * @return a
      */
     public ArrayList<Integer> availableBeds() {
         ArrayList<Integer> available = new ArrayList<Integer>();
@@ -188,7 +169,7 @@ public class Residence {
      * Remove the Student from the specified bed, freeing it for future assignment.
      * The student's bed label is reset to -1.
      *
-     * @param bedLabel the label of the bed to free
+     * @param bedLabel  
      * @precond isValidLabel(bedLabel) && isOccupied(bedLabel)
      */
     public void freeBed(int bedLabel) {
@@ -208,7 +189,7 @@ public class Residence {
      * Is bedLabel a valid external label for a bed?
      *
      * @param bedLabel an int to be tested to determine whether it is a valid label
-     *                 for a bed (from the external/user perspective)
+     *                 
      * @return true if bedLabel is a valid bed label, false otherwise
      */
     public boolean isValidLabel(int bedLabel) {
@@ -217,7 +198,7 @@ public class Residence {
 
     /**
      * Return a String representation of the properties of the Residence,
-     * including each bed and who occupies it (if anyone).
+     * 
      *
      * @return a String representation of the properties of the Residence
      */
