@@ -1,0 +1,194 @@
+/*
+  SENG 3120 Course material
+  Copyright (c) 2025
+  All rights reserved.
+
+  This document contains resources for homework assigned to students of
+  SENG 3120 and shall not be distributed without permission.  Posting this
+  file to a public or private website, or providing this file to a person
+  not registered in SENG 3120, constitutes Academic Misconduct, according
+  to Thompsons Rivers University Policy on Academic Misconduct.
+
+  Synopsis:
+     Student class for Assignment 3
+ */
+
+import java.util.ArrayList;
+
+/**
+ * A model of a Student who has a name, social insurance number, student ID,
+ * a bed label (if assigned), and a list of managers.
+ * Extends the Person class.
+ */
+public class Student extends Person {
+
+    /**
+     * The student's unique student ID (SID).
+     */
+    private String sid;
+
+    /**
+     * The label of the bed assigned to this student. -1 if no bed is assigned.
+     */
+    private int bedLabel;
+
+    /**
+     * The list of managers assigned to this student.
+     */
+    private ArrayList<Manager> managers;
+
+    /**
+     * Initialize a Student with the given name, social insurance number, and student ID.
+     * The student initially has no bed assigned and no managers.
+     *
+     * @param name  the name of the student
+     * @param ssn   the social insurance number of the student
+     * @param sid   the student ID of the student
+     * @precond name != null && !name.equals("") && ssn > 0 && sid != null && !sid.equals("")
+     */
+    public Student(String name, int ssn, String sid) {
+        super(name, ssn);
+        if (sid == null || sid.equals(""))
+            throw new IllegalArgumentException("Student ID cannot be null or empty.");
+        this.sid = sid;
+        this.bedLabel = -1;
+        this.managers = new ArrayList<Manager>();
+    }
+
+    /**
+     * Return the student ID of the student.
+     *
+     * @return the student ID (SID)
+     */
+    public String getSID() {
+        return this.sid;
+    }
+
+    /**
+     * Return the bed label of the student. Returns -1 if no bed is assigned.
+     *
+     * @return the bed label of the student
+     */
+    public int getBedLabel() {
+        return this.bedLabel;
+    }
+
+    /**
+     * Set the bed label for the student.
+     *
+     * @param bedLabel the bed label to assign to the student
+     */
+    public void setBedLabel(int bedLabel) {
+        this.bedLabel = bedLabel;
+    }
+
+    /**
+     * Add a manager to this student's list of managers.
+     *
+     * @param m the Manager to add
+     * @precond m != null
+     */
+    public void addManager(Manager m) {
+        if (m == null)
+            throw new IllegalArgumentException("Manager cannot be null.");
+        managers.add(m);
+    }
+
+    /**
+     * Remove the manager with the given employee ID from this student's list of managers.
+     * Does nothing if no manager with that ID is found.
+     *
+     * @param employeeId the employee ID of the manager to remove
+     * @precond employeeId != null && !employeeId.equals("")
+     */
+    public void removeManager(String employeeId) {
+        if (employeeId == null || employeeId.equals(""))
+            throw new IllegalArgumentException("Employee ID cannot be null or empty.");
+        for (int i = 0; i < managers.size(); i++) {
+            if (managers.get(i).getEmployeeId().equals(employeeId)) {
+                managers.remove(i);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Check whether a manager with the given employee ID is assigned to this student.
+     *
+     * @param employeeId the employee ID to search for
+     * @precond employeeId != null && !employeeId.equals("")
+     * @return true if a manager with the given employee ID is found, false otherwise
+     */
+    public boolean hasManager(String employeeId) {
+        if (employeeId == null || employeeId.equals(""))
+            throw new IllegalArgumentException("Employee ID cannot be null or empty.");
+        for (Manager m : managers) {
+            if (m.getEmployeeId().equals(employeeId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Return a string representation of all the information about the student,
+     * including name, SSN, bed label, and all associated managers.
+     *
+     * @return a string representation of the student
+     */
+    public String toString() {
+        String result = super.toString();
+        result += "Student ID: " + this.sid + "\n";
+        if (this.bedLabel == -1) {
+            result += "Bed: Not assigned\n";
+        } else {
+            result += "Bed: " + this.bedLabel + "\n";
+        }
+        result += "Managers: ";
+        if (managers.isEmpty()) {
+            result += "None\n";
+        } else {
+            result += "\n";
+            for (Manager m : managers) {
+                result += "  - " + m.getName() + " (ID: " + m.getEmployeeId() + ")\n";
+            }
+        }
+        return result;
+    }
+
+    /**
+     * A main method to test the Student class.
+     *
+     * @param args not used
+     */
+    public static void main(String[] args) {
+        // Create two managers for testing
+        Manager mgr1 = new Manager("Alice Smith", 111222333, "EMP001");
+        Manager mgr2 = new Manager("Bob Jones", 444555666, "EMP002");
+
+        // Create a student
+        Student s = new Student("John Doe", 987654321, "SID001");
+        System.out.println("--- Initial Student State ---");
+        System.out.println(s);
+
+        // Assign a bed
+        s.setBedLabel(5);
+        System.out.println("--- After Bed Assignment ---");
+        System.out.println(s);
+
+        // Add managers
+        s.addManager(mgr1);
+        s.addManager(mgr2);
+        System.out.println("--- After Adding Managers ---");
+        System.out.println(s);
+
+        // Check hasManager
+        System.out.println("Has EMP001: " + s.hasManager("EMP001")); // true
+        System.out.println("Has EMP999: " + s.hasManager("EMP999")); // false
+
+        // Remove a manager
+        s.removeManager("EMP001");
+        System.out.println("--- After Removing EMP001 ---");
+        System.out.println(s);
+    }
+}
